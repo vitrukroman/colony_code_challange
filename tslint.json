@@ -1,0 +1,9 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-sonarts", "tslint-react"],
+  "jsRules": {},
+  "rules": {
+    "variable-name": false
+  },
+  "rulesDirectory": []
+}

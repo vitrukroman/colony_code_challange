@@ -1,0 +1,22 @@
+.EventLog {
+  display: flex;
+}
+
+.EventLog__primaryText {
+  font-size: 14px;
+}
+
+.EventLog__secondaryText {
+  font-size: 12px;
+}
+
+.EventLog__avatar {
+  margin-right: 16px;
+}
+
+.EventLog__copy {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-family: "Mulish", sans-serif;
+}
