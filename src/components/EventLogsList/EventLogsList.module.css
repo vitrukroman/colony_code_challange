@@ -11,6 +11,8 @@
 }
 
 .EventLogsList__error {
+  margin-top: 48px;
+  text-align: center;
   width: 700px;
 }
 
@@ -18,14 +20,11 @@
   list-style-type: none;
   background-color: white;
   border-radius: 6px;
-  padding: 26px 20px;
   box-shadow: rgba(62, 118, 244, 0.14);
-  height: 91px;
-  box-sizing: border-box;
   margin: 2px 0;
-  transition: transform 0.1s;
+  transition: background-color 0.1s;
 }
 
 .EventLogsList__item:hover {
-  transform: translateX(16px);
+  background-color: lightgray;
 }

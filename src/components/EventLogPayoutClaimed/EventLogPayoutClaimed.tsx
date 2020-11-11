@@ -3,7 +3,7 @@ import EventLog from "../EventLog/EventLog";
 
 interface Props {
   userAddress: string;
-  amount: number;
+  amount: string;
   token: string;
   fundingPotId: string;
   eventDate: Date;
@@ -11,14 +11,22 @@ interface Props {
 const EventLogPayoutClaimed: FunctionComponent<Props> = (props) => {
   const primaryText = (
     <>
-      User <span className="bold">{props.userAddress}</span> claimed
-      <span className="bold">{props.amount}</span>
-      <span className="bold">{props.token}</span> payout from pot
-      <span className="bold">{props.fundingPotId}</span>
+      User <strong>{props.userAddress}</strong> claimed{" "}
+      <strong>
+        {props.amount}
+        {props.token}
+      </strong>{" "}
+      payout from pot <strong>{props.fundingPotId}</strong>
     </>
   );
 
-  return <EventLog eventMessage={primaryText} eventDate={props.eventDate} />;
+  return (
+    <EventLog
+      eventMessage={primaryText}
+      eventDate={props.eventDate}
+      avatarHash={props.userAddress}
+    />
+  );
 };
 
 export default EventLogPayoutClaimed;

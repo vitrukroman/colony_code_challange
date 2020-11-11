@@ -1,9 +1,17 @@
 .EventLog {
   display: flex;
+  padding: 26px 20px;
+}
+
+.EventLog:hover .EventLog__primaryText {
+  white-space: unset;
 }
 
 .EventLog__primaryText {
   font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .EventLog__secondaryText {
@@ -19,4 +27,5 @@
   justify-content: space-between;
   flex-direction: column;
   font-family: "Mulish", sans-serif;
+  overflow: hidden;
 }

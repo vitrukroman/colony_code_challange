@@ -1,16 +1,13 @@
 import { getColonyClient } from "./colonyClient";
 import { getLogs } from "@colony/colony-js";
 import { EventLog } from "../models/eventLog";
-import { Filter, Log } from "ethers/providers";
+import { Filter } from "ethers/providers";
 
-const getEventLogs = async (
-  filter: Filter,
-  factoryMethod: (log: Log) => Promise<EventLog>
-) => {
+const getEventLogs = async (filter: Filter) => {
   const colonyClient = await getColonyClient;
 
   const logs = await getLogs(colonyClient, filter);
-  const eventLogsPromises = logs.map(factoryMethod);
+  const eventLogsPromises = logs.map(EventLog.initializeFromLog);
 
   return Promise.all(eventLogsPromises);
 };
@@ -18,17 +15,23 @@ const getEventLogs = async (
 export const getColonyInitializedEventLogs = async () => {
   const colonyClient = await getColonyClient;
 
-  return getEventLogs(
-    colonyClient.filters.ColonyInitialised(null, null),
-    EventLog.getColonyInitializedEventLog
-  );
+  return getEventLogs(colonyClient.filters.ColonyInitialised(null, null));
 };
 
 export const getPayoutClaimedEventLogs = async () => {
   const colonyClient = await getColonyClient;
 
-  return getEventLogs(
-    colonyClient.filters.PaymentAdded(null),
-    EventLog.getPayoutClaimedEventLog
-  );
+  return getEventLogs(colonyClient.filters.PayoutClaimed(null, null, null));
+};
+
+export const getDomainAddedEventLog = async () => {
+  const colonyClient = await getColonyClient;
+
+  return getEventLogs(colonyClient.filters.DomainAdded(null));
+};
+
+export const getColonyRoleSetEventLog = async () => {
+  const colonyClient = await getColonyClient;
+
+  return getEventLogs((colonyClient.filters as any).ColonyRoleSet());
 };

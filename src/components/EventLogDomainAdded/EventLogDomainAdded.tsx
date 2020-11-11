@@ -2,12 +2,17 @@ import React, { FunctionComponent } from "react";
 import EventLog from "../EventLog/EventLog";
 
 interface Props {
+  domainId: string;
   eventDate: Date;
   transactionHash: string;
 }
+const EventLogDomainAdded: FunctionComponent<Props> = (props) => {
+  const primaryText = (
+    <>
+      Domain <strong>{props.domainId}</strong> added.
+    </>
+  );
 
-const EventLogColonyInitialized: FunctionComponent<Props> = (props) => {
-  const primaryText = "Congratulations! It's a beautiful baby colony!";
   return (
     <EventLog
       avatarHash={props.transactionHash}
@@ -17,4 +22,4 @@ const EventLogColonyInitialized: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default EventLogColonyInitialized;
+export default EventLogDomainAdded;

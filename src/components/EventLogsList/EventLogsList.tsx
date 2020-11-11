@@ -12,7 +12,10 @@ interface Props {
 export const EventLogsList: FunctionComponent<Props> = (props) => {
   const listElements = props.eventLogs.map((eventLog) => {
     return (
-      <li key={eventLog.logIndex} className={styles.EventLogsList__item}>
+      <li
+        key={`${eventLog.type}_${eventLog.blockHash}_${eventLog.logIndex}`}
+        className={styles.EventLogsList__item}
+      >
         <EventLogRenderer eventLog={eventLog} />
       </li>
     );
