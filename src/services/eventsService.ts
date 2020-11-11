@@ -7,7 +7,7 @@ const getEventLogs = async (filter: Filter) => {
   const colonyClient = await getColonyClient;
 
   const logs = await getLogs(colonyClient, filter);
-  const eventLogsPromises = logs.map(EventLog.initializeFromLog);
+  const eventLogsPromises = logs.slice(0, 3).map(EventLog.initializeFromLog);
 
   return Promise.all(eventLogsPromises);
 };
